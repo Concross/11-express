@@ -1,0 +1,33 @@
+{
+  "name": "11-express",
+  "version": "1.0.0",
+  "description": "![cf](https://i.imgur.com/7v5ASc8.png) 11: Express and Babel ======",
+  "main": "index.js",
+  "scripts": {
+    "watch": "nodemon index.js",
+    "test": "jest **/*.test.js"
+  },
+  "jest": {
+    "verbose": true,
+    "testUrl": "http://localhost/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Concross/11-express.git"
+  },
+  "author": "Connor Crossley <cacrossley22@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Concross/11-express/issues"
+  },
+  "homepage": "https://github.com/Concross/11-express#readme",
+  "dependencies": {
+    "dotenv": "^6.0.0",
+    "express": "^4.16.3",
+    "uuid": "^3.3.2"
+  },
+  "devDependencies": {
+    "jest": "^23.6.0",
+    "supertest": "^3.3.0"
+  }
+}
