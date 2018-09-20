@@ -1,6 +1,6 @@
 'use strict';
 
-import Customers from '../src/lib/customers';
+import Customers from '../src/models/customers';
 
 describe('Customers constructor tests', () => {
   let customer = new Customers();
