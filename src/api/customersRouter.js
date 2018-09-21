@@ -6,20 +6,16 @@ import Customers from '../models/customers';
 const router = express.Router();
 
 router.post('/api/v1/customers', (req, res) => {
-  let [age, gender, ethnicity, salary, maritalStatus] = [
-    req.body.age,
-    req.body.gender,
-    req.body.ethnicity,
-    req.body.salary,
-    req.body.maritalStatus,
-  ];
 
-  let customer = new Customers(age, gender, ethnicity, salary, maritalStatus);
+  let customer = new Customers(req.body);
   customer.save()
     .then(data => {
-      res.status(200).json(data);
+      console.log(data);
+      res.status(200).json(req.body);
     })
-    .catch(console.error);
+    .catch(err => {
+      res.status(400).send(err);
+    });
 });
 
 router.get('/api/v1/customers/:id', (req, res) => {
@@ -30,7 +26,16 @@ router.get('/api/v1/customers/:id', (req, res) => {
       .then(data => res.status(200).send(data))
       .catch(err => res.status(400).send(err));
   }
+});
 
+router.delete('/api/v1/customers/:id', (req, res) => {
+  if (!req.params.id) {
+    res.status(400).send('Bad ID request, unable to delete file');
+  } else {
+    Customers.delete(req.params.id)
+      .then(msg => res.status(200).send(msg))
+      .catch(err => res.status(400).send(err));
+  }
 });
 
 router.all('*', (req, res) => {

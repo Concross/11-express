@@ -4,14 +4,14 @@ import uuid from 'uuid/v1';
 import storage from '../lib/storage/filesystem';
 
 class Customers {
-  constructor(age = null, gender = null, ethnicity = null, salary = 0, maritalStatus = null) {
+  constructor(config) {
     this.id = uuid();
     this.orderHistory = [];
-    this.age = age;
-    this.gender = gender;
-    this.ethnicity = ethnicity;
-    this.salary = salary;
-    this.maritalStatus = maritalStatus;
+    this.age = config && config.age || null;
+    this.gender = config && config.gender || null;
+    this.ethnicity = config && config.ethnicity || null;
+    this.salary = config && config.salary || 0;
+    this.maritalStatus = config && config.maritalStatus || null;
   }
 
   save() {
@@ -20,6 +20,10 @@ class Customers {
 
   static get(customerId) {
     return storage.get(customerId);
+  }
+
+  static delete(customerId) {
+    return storage.delete(customerId);
   }
 }
 

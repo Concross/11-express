@@ -15,14 +15,14 @@ storage.save = data => {
 
     fs.writeFile(file, text, err => {
       if (err) { reject(err); }
-      resolve(data.id);
+      resolve(data);
     });
   });
 };
 
 storage.get = customerId => {
   return new Promise((resolve, reject) => {
-    if (!customerId) { reject('ERROR: No ID provided for GET reques'); }
+    if (!customerId) { reject('ERROR: No ID provided for GET request'); }
 
     let file = `${databaseDir}/${customerId}.json`;
 
@@ -30,6 +30,19 @@ storage.get = customerId => {
       if (err) { reject(err); }
       let obj = JSON.parse(data.toString());
       resolve(obj);
+    });
+  });
+};
+
+storage.delete = customerId => {
+  return new Promise((resolve, reject) => {
+    if (!customerId) { reject('ERROR: No ID provided for DELETE request'); }
+
+    let file = `${databaseDir}/${customerId}.json`;
+
+    fs.unlink(file, err => {
+      if (err) { reject(err); }
+      resolve('Delete successful');
     });
   });
 };
