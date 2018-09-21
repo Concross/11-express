@@ -5,10 +5,9 @@ import customersRouter from './api/customersRouter';
 
 let app = express();
 
-app.use(express.json);
+app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-
-// app.use(customersRouter);
+app.use(customersRouter);
 
 let isRunning = false;
 
