@@ -15,7 +15,7 @@ storage.save = data => {
 
     fs.writeFile(file, text, err => {
       if (err) { reject(err); }
-      resolve(data);
+      resolve(data.id);
     });
   });
 };
