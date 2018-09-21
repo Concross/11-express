@@ -22,7 +22,7 @@ router.get('/api/v1/customers/:id', (req, res) => {
     res.status(400).send('Bad ID request');
   } else {
     Customers.get(req.params.id)
-      .then(data => res.status(200).send(data))
+      .then(data => res.status(200).send(req.params.id))
       .catch(err => res.status(400).send(err));
   }
 
