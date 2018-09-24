@@ -33,7 +33,7 @@ router.delete('/api/v1/customers/:id', (req, res) => {
     res.status(400).send('Bad ID request, unable to delete file');
   } else {
     Customers.delete(req.params.id)
-      .then(msg => res.status(200).send(msg))
+      .then(msg => res.status(204).send(msg))
       .catch(err => res.status(400).send(err));
   }
 });
@@ -43,8 +43,5 @@ router.all('*', (req, res) => {
   res.status(404);
   res.send();
 });
-
-
-
 
 export default router;
